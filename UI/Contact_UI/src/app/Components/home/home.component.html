@@ -1,0 +1,55 @@
+<nav class="navbar  shadow p-1 mb-2 bg-body-tertiary rounded">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        <a class="navbar-brand" href="#">
+            <img src="./assets/logo.svg" alt="Logo" width="150" class="d-inline-block align-text-top">
+        </a>
+        <button type="button" class="btn btn-primary" (click)="newContact()">Add Contact</button>
+    </div>
+
+</nav>
+<table class="table table-hover table-striped  mt-4 p-4 w-100 overflow-scroll">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="contacts.length==0">
+            <td colspan="4">No contacts found</td>
+        </tr>
+        <ng-container *ngIf="contacts.length>0">
+            <tr *ngFor="let contact of contacts;let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+                <td class="d-flex align-items-center justify-content-start gap-3">
+                    <div (click)="getContact(contact)" style="cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                            <path
+                                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                        </svg></div>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':view?'block':'none'}">
+    <div class="modal-dialog modal-fullscreen modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Contact details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="close(false)"></button>
+            </div>
+            <div class="modal-body">
+                <app-actions [contact]="selectedContact" (close)="close($event)"></app-actions>
+            </div>
+
+
+        </div>
+    </div>

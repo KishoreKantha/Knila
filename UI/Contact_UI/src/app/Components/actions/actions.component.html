@@ -1,0 +1,51 @@
+<div class="container d-flex  justify-content-center" style="height: 100vh;">
+    <div class="w-50 ">
+        <div class="row">
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>Firstname</b>
+                <input class="form-control w-75" [(ngModel)]="contact.firstName" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>Lastname</b>
+                <input class="form-control w-75" [(ngModel)]="contact.lastName" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>Email</b>
+                <input type="email" class="form-control w-75" [(ngModel)]="contact.email" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>Password</b>
+                <input type="password" class="form-control w-75" [(ngModel)]="contact.password" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>Phone Number</b>
+                <input type="number" class="form-control w-75" [(ngModel)]="contact.phoneNumber" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>City</b>
+                <input class="form-control w-75" [(ngModel)]="contact.city" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>State</b>
+                <input class="form-control w-75" [(ngModel)]="contact.state" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>Country</b>
+                <input class="form-control w-75" [(ngModel)]="contact.country" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>Address</b>
+                <input class="form-control w-75" [(ngModel)]="contact.address" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-between">
+                <b>Postal Code</b>
+                <input type="number" class="form-control w-75" [(ngModel)]="contact.postalCode" />
+            </div>
+            <div class="p-3 col-12 d-flex align-items-center justify-content-center gap-4">
+                <button type="button" class="btn btn-info"
+                    (click)="addOrUpdateContact(contact.id==0?'add':'update')">{{contact.id==0?'Add':'Update'}}</button>
+                <button *ngIf="contact.id!=0" type="button" class="btn btn-danger" (click)="deleteContact()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
